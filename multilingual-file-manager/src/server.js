@@ -29,7 +29,7 @@ app.get('/', (req, res) => {
 
 // Import and use routes
 const authRoutes = require('./routes/auth.routes');
-const fileRoutes = require('./routes/file.routes');
+const eventRoutes = require('./routes/event.routes');
 
 app.use('/auth', authRoutes);
-app.use('/files', fileRoutes);
+app.use('/events', eventRoutes);
