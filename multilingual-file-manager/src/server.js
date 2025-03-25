@@ -30,6 +30,8 @@ app.get('/', (req, res) => {
 // Import and use routes
 const authRoutes = require('./routes/auth.routes');
 const eventRoutes = require('./routes/event.routes');
+const categoryRoutes = require('./routes/category.routes');
 
 app.use('/auth', authRoutes);
 app.use('/events', eventRoutes);
+app.use('/categories', categoryRoutes);

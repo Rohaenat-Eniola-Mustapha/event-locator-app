@@ -66,3 +66,48 @@ exports.deleteEvent = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+exports.findEventsNear = async (req, res) => {
+  try {
+    const { longitude, latitude, maxDistance } = req.query;
+
+    if (!longitude || !latitude || !maxDistance) {
+      return res.status(400).json({ message: 'Longitude, latitude, and maxDistance are required' });
+    }
+
+    const events = await Event.find({
+      location: {
+        $near: {
+          $geometry: {
+            type: 'Point',
+            coordinates: [parseFloat(longitude), parseFloat(latitude)],
+          },
+          $maxDistance: parseInt(maxDistance), // Max distance in meters
+        },
+      },
+    }).populate('creator', 'username');
+
+    res.json(events);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+exports.filterEventsByCategory = async (req, res) => {
+  try {
+    const { categories } = req.query;
+
+    if (!categories) {
+      return res.status(400).json({ message: 'Categories query parameter is required' });
+    }
+
+    // Split the categories string into an array
+    const categoryArray = categories.split(',');
+
+    const events = await Event.find({ categories: { $in: categoryArray } }).populate('creator', 'username');
+
+    res.json(events);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};

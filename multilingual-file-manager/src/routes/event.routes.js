@@ -7,5 +7,7 @@ router.post('/', authMiddleware, eventController.createEvent);
 router.get('/', eventController.getEvents);
 router.put('/:id', authMiddleware, eventController.updateEvent);
 router.delete('/:id', authMiddleware, eventController.deleteEvent);
+router.get('/near', eventController.findEventsNear);
+router.get('/filter', eventController.filterEventsByCategory);
 
 module.exports = router;

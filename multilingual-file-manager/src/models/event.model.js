@@ -2,21 +2,14 @@ const mongoose = require('mongoose');
 
 const eventSchema = new mongoose.Schema({
   title: { type: String, required: true },
-  description: { type: String },
+  description: String,
   location: {
-    type: {
-      type: String,
-      enum: ['Point'],
-      required: true,
-    },
-    coordinates: {
-      type: [Number], // [longitude, latitude]
-      required: true,
-    },
+    type: { type: String, enum: ['Point'], required: true },
+    coordinates: { type: [Number], required: true },
   },
   dateTime: { type: Date, required: true },
-  categories: [{ type: String }],
-  creator: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+  categories: [String],
+  creator: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
 });
 
 eventSchema.index({ location: '2dsphere' }); // Create 2dsphere index
