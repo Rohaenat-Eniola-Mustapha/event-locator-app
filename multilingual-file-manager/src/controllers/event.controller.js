@@ -15,7 +15,7 @@ exports.createEvent = async (req, res) => {
     });
 
     await newEvent.save();
-    res.status(201).json({ message: 'Event created successfully', event: newEvent });
+    res.status(201).json({ message: req.__('event.created'), event: newEvent });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -61,7 +61,7 @@ exports.deleteEvent = async (req, res) => {
       return res.status(404).json({ message: 'Event not found' });
     }
 
-    res.json({ message: 'Event deleted successfully' });
+    res.json({ message: req.__('event.deleted') });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

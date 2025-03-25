@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+const i18n = require('./i18n');
 
 dotenv.config();
 
@@ -9,6 +10,7 @@ const PORT = process.env.PORT || 3000;
 
 // Middleware to parse JSON request bodies
 app.use(express.json());
+app.use(i18n.init);
 
 // Database connection (removed deprecated options)
 mongoose.connect(process.env.MONGO_URI)

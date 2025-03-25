@@ -1,0 +1,16 @@
+{
+    "event": {
+      "created": "Événement créé avec succès",
+      "notFound": "Événement introuvable",
+      "deleted": "Événement supprimé avec succès"
+    },
+    "category":{
+      "created": "Catégorie créée avec succès",
+      "notFound": "Catégorie introuvable",
+      "deleted": "Catégorie supprimée avec succès"
+    },
+    "auth":{
+      "failed": "L'authentification a échoué",
+      "registered": "Utilisateur enregistré avec succès"
+    }
+}

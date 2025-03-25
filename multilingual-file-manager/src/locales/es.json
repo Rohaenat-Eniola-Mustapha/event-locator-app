@@ -1,0 +1,16 @@
+{
+    "event": {
+      "created": "Evento creado exitosamente",
+      "notFound": "Evento no encontrado",
+      "deleted": "Evento eliminado exitosamente"
+    },
+    "category":{
+      "created": "Categoría creada con éxito",
+      "notFound": "Categoría no encontrada",
+      "deleted": "Categoría eliminada exitosamente"
+    },
+    "auth":{
+      "failed": "Error de autenticación",
+      "registered": "Usuario registrado exitosamente"
+    }
+}
