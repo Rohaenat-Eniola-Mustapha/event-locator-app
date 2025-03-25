@@ -1,4 +1,5 @@
 const Event = require('../models/event.model');
+const eventQueue = require('../queues/queue');
 
 exports.createEvent = async (req, res) => {
   try {
@@ -15,6 +16,9 @@ exports.createEvent = async (req, res) => {
     });
 
     await newEvent.save();
+
+    eventQueue.add({ eventId: newEvent._id }, { delay: 5000 });
+
     res.status(201).json({ message: req.__('event.created'), event: newEvent });
   } catch (error) {
     res.status(500).json({ error: error.message });
